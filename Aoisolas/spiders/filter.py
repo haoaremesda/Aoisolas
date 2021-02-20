@@ -2,11 +2,12 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from ..items import AoisolasItem
+from hashlib import md5
 import re
 
 
 class FilterSpider(CrawlSpider):
-    name = 'filter'
+    name = 'netbian'
     allowed_domains = ['www.netbian.com']
     start_urls = ['http://www.netbian.com/mei/index.htm']
 
@@ -26,6 +27,7 @@ class FilterSpider(CrawlSpider):
             item = AoisolasItem()
             item['name'] = re.findall(r'title="(.+?)"', s)[0]
             item['img_url'] = re.findall(r'src="(.+?)"', s)[0]
+            item['md5_url'] = md5(item['img_url'].encode()).hexdigest()
             yield item
         max_page_number = int(response.xpath('//div[@class="page"]/a[last()-1]/text()').get())
         for num in range(2, max_page_number):

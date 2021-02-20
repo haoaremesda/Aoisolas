@@ -79,7 +79,6 @@ MYSQL_PASSWORD = "123"
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'Aoisolas.pipelines.AoisolasPipeline': 300,
-    'Aoisolas.MySQLPipeline.MySQLPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
