@@ -1,6 +1,5 @@
 import scrapy
-from scrapy.linkextractors import LinkExtractor
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import CrawlSpider
 from ..items import AoisolasItem
 from hashlib import md5
 import re

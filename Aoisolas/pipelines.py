@@ -9,6 +9,7 @@ from itemadapter import ItemAdapter
 
 import pymysql
 from twisted.enterprise import adbapi
+import time
 
 class AoisolasPipeline:
     def __init__(self, dbpool):
@@ -45,9 +46,10 @@ class AoisolasPipeline:
     def do_insert(self, cursor, item):
         # 对数据库进行插入操作，并不需要commit，twisted会自动commit
         insert_sql = """
-            insert into netbian(name, img_url, md5_url) VALUES (%s,%s,%s)
+            insert ignore into netbian(name, img_url, md5_url, createDate) VALUES (%s,%s,%s,%s)
             """
-        cursor.execute(insert_sql, (item['name'], item['img_url'], item['md5_url']))
+        cursor.execute(insert_sql, (item['name'], item['img_url'], item['md5_url'], round(time.time())))
+        return item
 
     def handle_error(self, failure):
         if failure:
