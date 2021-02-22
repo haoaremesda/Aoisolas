@@ -11,9 +11,9 @@ class FilterSpider(CrawlSpider):
     start_urls = ['http://www.netbian.com/mei/index.htm']
 
     custom_settings = {
-        'CONCURRENT_ITEMS': 60,  # 设定同时处理的结果个数
-        'CONCURRENT_REQUESTS': 30,  # 设置同时处理的请求个数
-        'CONCURRENT_REQUESTS_PER_DOMAIN': 10  # 并发请求的个数
+        'CONCURRENT_ITEMS': 120,  # 设定同时处理的结果个数
+        'CONCURRENT_REQUESTS': 60,  # 设置同时处理的请求个数
+        'CONCURRENT_REQUESTS_PER_DOMAIN': 20  # 并发请求的个数
     }
 
     def start_requests(self):

@@ -42,6 +42,7 @@ class AoisolasPipeline:
         query = self.dbpool.runInteraction(self.do_insert, item)  # 指定操作方法和操作数据
         # 添加异常处理
         query.addCallback(self.handle_error)  # 处理异常
+        return item
 
     def do_insert(self, cursor, item):
         # 对数据库进行插入操作，并不需要commit，twisted会自动commit
@@ -49,7 +50,6 @@ class AoisolasPipeline:
             insert ignore into netbian(name, img_url, md5_url, createDate) VALUES (%s,%s,%s,%s)
             """
         cursor.execute(insert_sql, (item['name'], item['img_url'], item['md5_url'], round(time.time())))
-        return item
 
     def handle_error(self, failure):
         if failure:
