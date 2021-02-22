@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 20/02/2021 11:17:04
+ Date: 22/02/2021 09:58:49
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,8 @@ CREATE TABLE `netbian`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `img_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `md5_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `createDate` int NOT NULL,
+  PRIMARY KEY (`id`, `md5_url`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 10583 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
