@@ -25,10 +25,14 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1
+DOWNLOAD_DELAY = 0
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
+
+# CONCURRENT_ITEMS: 120  # 设定同时处理的结果个数
+# CONCURRENT_REQUESTS: 60  # 设置同时处理的请求个数
+# CONCURRENT_REQUESTS_PER_DOMAIN: 20  # 并发请求的个数
 
 # 对于json文件，在setting.js文件里添加，设置编码格式，否则会乱码
 # FEED_EXPORT_ENCODING='utf-8'
